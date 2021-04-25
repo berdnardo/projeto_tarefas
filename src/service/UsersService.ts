@@ -10,14 +10,6 @@ interface IUserCreate {
   email: string;
 }
 
-interface IFindByEmail {
-  email: string;
-}
-
-interface IdeleteUserByID {
-  id: string;
-}
-
 
 class UsersService {
 

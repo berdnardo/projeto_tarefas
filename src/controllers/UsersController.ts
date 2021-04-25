@@ -17,7 +17,7 @@ class UsersController {
     } catch (error) {
       return response.status(400).json({
         message: error.message,
-      })
+      });
     }
 
     
