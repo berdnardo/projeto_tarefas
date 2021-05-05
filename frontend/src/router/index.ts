@@ -3,8 +3,8 @@ import VueRouter, { RouteConfig } from "vue-router";
 import Home from "../views/Home.vue";
 import Admin from "../views/Admin.vue";
 import User from "../views/User.vue";
-import UserLogin from "../components/UserLogin.vue";
 import UserContent from "../components/UserContent.vue";
+import AdminMainTasks from "../components/AdminMainTasks.vue"
 
 Vue.use(VueRouter);
 
@@ -18,6 +18,14 @@ const routes: Array<RouteConfig> = [
     path: "/admin",
     name: "Admin",
     component: Admin,
+    children: [
+      {
+        path: "/admin",
+        components: {
+          main: AdminMainTasks,
+        },
+      }
+    ]
   },
   {
     path: "/user",
@@ -26,22 +34,13 @@ const routes: Array<RouteConfig> = [
     children: [
       {
         path: "/user",
-        components: {
-          login: UserLogin,
+        components: {          
           task: UserContent,
       },
     }
     ]
   },
-  // {
-  //   path: "/about",
-  //   name: "About",
-  //   route level code-splitting
-  //   this generates a separate chunk (about.[hash].js) for this route
-  //   which is lazy-loaded when the route is visited.
-  //   component: () =>
-  //     import(/* webpackChunkName: "about" */ "../views/About.vue"),
-  // },
+  
 ];
 
 const router = new VueRouter({

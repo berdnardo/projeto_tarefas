@@ -1,24 +1,23 @@
 <template>
   <v-app>
+
     <v-navigation-drawer
       v-model="drawer"
-      app
-    >
+      app>
      <v-list-item>
         <AdminSideNav/>
-     </v-list-item>
-    
+     </v-list-item>    
     </v-navigation-drawer>
 
     <v-app-bar app>
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-
-      <v-toolbar-title>e-Crossfit</v-toolbar-title>
+      <v-toolbar-title>e-Gym</v-toolbar-title>
     </v-app-bar>
 
-    <v-main>
-      Admin
+    <v-main class="ma-6">
+      <router-view  :name="this.$store.state.adminView"/>
     </v-main>
+
   </v-app>
 </template>
 
@@ -29,7 +28,11 @@ import AdminSideNav from "../components/AdminSideNav.vue"
 @Component({
   components: {
     AdminSideNav
-  }
+  },
+
+  mounted () {
+     this.$store.commit("main")
+  },
 })
 export default class Admin extends Vue {
   drawer = false

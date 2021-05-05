@@ -52,9 +52,20 @@ class UsersService {
 
   // Deleta o usuário pelo ID.
   async deleteUserByID(id: string) {
-    const user = this.usersRepository.delete(id).catch(error => console.log(error));
+    const user = await this.usersRepository.delete(id).catch(error => console.log(error));
     
     return user
+  }
+
+  async findAllUsers() {
+    const users = await this.usersRepository.find({
+      select: ["name", "id", "email"],
+      order: {
+        name: "ASC"
+      },   
+    }).catch(error => console.log(error));
+    
+    return users
   }
 
 

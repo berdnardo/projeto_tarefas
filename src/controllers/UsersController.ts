@@ -40,7 +40,17 @@ class UsersController {
 
     const user = await usersService.deleteUserByID(id);
 
-    response.json(user);
+    return response.json(user);
+  }
+
+  async findAllUsers(request: Request, response: Response): Promise<Response> {
+
+    const usersService = new UsersService();
+    
+    const users = await usersService.findAllUsers();
+
+    return response.json(users);
+
   }
 }
 

@@ -40,7 +40,7 @@ class TasksService {
   async findTasksByUserID(user_id: string) {
 
     const task = await this.taskRepository.find({
-      where: {user_id},
+      where: {user_id, done: false},
       relations: ["user"]
     });
 

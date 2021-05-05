@@ -13,7 +13,7 @@
     <v-app-bar app>
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
 
-      <v-toolbar-title>e-Crossfit</v-toolbar-title>
+      <v-toolbar-title>e-Gym</v-toolbar-title>
     </v-app-bar>
 
     <v-main>
@@ -27,19 +27,17 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import UserSideNav from "../components/UserSideNav.vue";
-import UserLogin from "../components/UserLogin.vue";
-import UserContent from "../components/UserContent.vue";
+
 
 @Component({
   components: {
     UserSideNav,
-    UserLogin,
-    UserContent
+    
   },
   mounted () {
-     this.$store.commit("login")
+     this.$store.commit("task")
   },
-  
+
 })
 export default class User extends Vue {
   drawer = false

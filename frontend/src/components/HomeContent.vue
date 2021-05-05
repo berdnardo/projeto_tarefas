@@ -20,7 +20,7 @@
       </template>
       <v-list>
         <v-list-item to="/user" @click="login">
-          <v-list-item-title>Usuario</v-list-item-title>
+          <v-list-item-title>Aluno</v-list-item-title>
         </v-list-item>
         <v-divider black></v-divider>
         <v-list-item to="/admin">

@@ -14,6 +14,7 @@ route.get('/', (request, response) => {
 route.post("/users", usersController.create);
 route.get("/users/:email", usersController.findByEmail);
 route.delete("/users/:id", usersController.deleteUserByID);
+route.get("/users", usersController.findAllUsers);
 
 route.post("/tasks", tasksController.create);
 route.get("/tasks/:id", tasksController.findTasksByUserID);

@@ -1,7 +1,7 @@
 <template>
 <v-app>
   <v-app-bar app>
-    e-Crossfit
+    e-Gym
   </v-app-bar>
     <v-main app>
       <v-container fluid>

@@ -11,9 +11,9 @@
          <v-divider></v-divider>
          <v-list>
            <v-list-item to="/">
-             <v-listi-item-icon>
+             <v-list-item-icon>
                <v-icon></v-icon>
-             </v-listi-item-icon>
+             </v-list-item-icon>
               <v-list-item-content>
             <v-list-item-title>Home</v-list-item-title>
           </v-list-item-content>
