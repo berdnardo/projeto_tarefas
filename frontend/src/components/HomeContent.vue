@@ -19,7 +19,7 @@
         </v-btn>
       </template>
       <v-list>
-        <v-list-item to="/user" @click="login">
+        <v-list-item to="/user">
           <v-list-item-title>Aluno</v-list-item-title>
         </v-list-item>
         <v-divider black></v-divider>

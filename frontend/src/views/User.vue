@@ -35,7 +35,7 @@ import UserSideNav from "../components/UserSideNav.vue";
     
   },
   mounted () {
-     this.$store.commit("task")
+    this.$store.commit("task")
   },
 
 })

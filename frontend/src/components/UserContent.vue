@@ -79,7 +79,7 @@ Vue.use(VueAxios, axios);
 
     async findTasks (id) {
       let {...tarefas} = await axios
-      .get(`http://localhost:3333/tasks/${this.id}`)
+      .get(`http://localhost:3333/tasks/${id}`)
       .then(respose => {return respose.data});
       return tarefas
     },
