@@ -15,6 +15,7 @@ O conceito do projeto foi desenvolver uma plataforma onde um professor/personal 
 * Axios
 * Vue Router
 * Vuex
+* Vuetify
 
 #### Backend:
 
