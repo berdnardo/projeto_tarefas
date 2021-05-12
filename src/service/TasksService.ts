@@ -46,6 +46,20 @@ class TasksService {
     return task;
   }
 
+  async findTasksNotDone(user_id: string) {
+
+    const tasks = await this.taskRepository.find({
+      where: {
+        user_id,
+        done: false
+      },
+      order: {
+        created_at: "DESC"
+      }
+    })
+    return tasks;
+  }
+
 
 }
 

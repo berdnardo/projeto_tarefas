@@ -43,6 +43,16 @@ class TasksController {
     return response.json(task);
   }
 
+  async findTasksNotDone(request: Request, response: Response) {
+    const { id } = request.params;
+
+    const taskService = new TasksService();
+    
+    const tasks = await taskService.findTasksNotDone(id);
+
+    return response.json(tasks);
+  }
+
 }
 
 export {TasksController}

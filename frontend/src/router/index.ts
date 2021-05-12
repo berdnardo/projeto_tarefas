@@ -5,6 +5,8 @@ import Admin from "../views/Admin.vue";
 import User from "../views/User.vue";
 import UserContent from "../components/UserContent.vue";
 import AdminContent from "../components/AdminContent.vue"
+import AdminCreateTask from "../components/AdminCreateTask.vue";
+import AdminCreateUser from "../components/AdminCreateUser.vue";
 
 Vue.use(VueRouter);
 
@@ -23,6 +25,8 @@ const routes: Array<RouteConfig> = [
         path: "/admin",
         components: {
           main: AdminContent,
+          createTask: AdminCreateTask,
+          createUser: AdminCreateUser
         },
       }
     ]

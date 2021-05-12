@@ -7,15 +7,15 @@ export default new Vuex.Store({
   state: {
     userView: "login",
     adminView: "main",
-    emailUser: "",
+   
   },
   mutations: {
     login: state => state.userView = "login",
     task: state => state.userView = "task",
     main: state => state.adminView = "main",
-    emailUser (state, payload) {
-      state.emailUser = payload.amount
-    },
+    createTask: state => state.adminView = "createTask",
+    createUser: state => state.adminView = "createUser"
+    
   },
   actions: {},
   modules: {},

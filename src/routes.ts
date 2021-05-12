@@ -18,6 +18,7 @@ route.get("/users", usersController.findAllUsers);
 
 route.post("/tasks", tasksController.create);
 route.get("/tasks/:id", tasksController.findTasksByUserID);
-route.put("/tasks/:id", tasksController.taskDone)
+route.put("/tasks/:id", tasksController.taskDone);
+route.get("/notdone/:id", tasksController.findTasksNotDone);
 
 export {route}

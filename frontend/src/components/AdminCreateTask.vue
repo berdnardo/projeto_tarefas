@@ -4,24 +4,29 @@
     <v-form
     ref="form"
     v-model="valid"
-    lazy-validation
-  >
+    lazy-validation>
 
     <v-text-field
       v-model="email"
       :rules="emailRules"
-      label="E-mail"
+      label="E-mail do Aluno"
       required
-    ></v-text-field>    
+    ></v-text-field>
+
+    <v-text-field
+      v-model="task"
+      :counter="50"
+      :rules="taskRules"      
+      label="Exercício"
+      required
+    ></v-text-field>      
 
     <v-btn
       :disabled="!valid"
       color="success"
       class="mr-4"
-      @click="validate"
-      
-    >
-      Listar
+      @click="validate">
+      Adicionar
     </v-btn>
     
     <v-btn
@@ -29,21 +34,10 @@
       class="mr-4"
       @click="reset"
     >
-      Limpar Email
+      Limpar Campos
     </v-btn>    
   </v-form>
 
-  <v-card v-if="login == true"
-  class="ma-5 d-flex flex-column" width="60%">  
-    <v-container fluid v-for="task in this.tasks" :key="task">
-    <v-checkbox 
-    color="success"
-    :label="[task.tarefa]"
-    @change="taskDone(task.id)">
-    </v-checkbox>
-    <v-divider></v-divider>
-    </v-container>
-  </v-card>
   </v-card>
 </template>
 
@@ -61,8 +55,8 @@ Vue.use(VueAxios, axios);
         this.$refs.form.validate()
         if (this.email) {
           this.id = await this.findUserID(this.email) 
-          this.tasks = await this.findTasks(this.id)
-          this.login = true;
+          let tarefa = await this.addTask(this.id, this.task)
+          this.$refs.form.reset()
         }
       },
 
@@ -77,36 +71,38 @@ Vue.use(VueAxios, axios);
       return id      
     },
 
-    async findTasks (id) {
-      let {...tarefas} = await axios
-      .get(`http://localhost:3333/notdone/${id}`)
-      .then(respose => {return respose.data});
-      return tarefas
-    },
-
-    async taskDone (id) {
-      let done = await axios
-      .put(`http://localhost:3333/tasks/${id}`)
-      .then(respose => {return respose.data});
-      return done
+    async addTask (id, task) {
+      let add = await axios
+      .post(`http://localhost:3333/tasks`, {
+        user_id: id,
+        tarefa: task,
+        done: false
+      })
+      .then(response => {return response.data})
+      return add
     }
+    
            
   },
 
     
 })
-export default class UserContent extends Vue {
+export default class AdminCreateTask extends Vue {
 
-  tasks = null;
-  id = null;
-  login = false
+  task = null;
+  taskRules= [
+        v => !!v || 'Exercicio deve ser preenchido',
+        v => (v && v.length <= 50) || 'Caracteres excedidos',
+      ]
   
-  valid = true 
-  email = ''
+  id = null;  
+  
+  valid = true; 
+  email = '';
   emailRules = [
     v => !!v || 'E-mail é necessário!',
     v => /.+@.+\..+/.test(v) || 'E-mail inválido!',
-  ]
+  ];
 }
 </script>
 
